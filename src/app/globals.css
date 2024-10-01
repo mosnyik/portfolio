@@ -25,3 +25,31 @@ body {
     text-wrap: balance;
   }
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: calc(300px * 10);
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html {
+  scroll-padding-top: 4rem; /* Adjust this value based on your navbar height */
+}
