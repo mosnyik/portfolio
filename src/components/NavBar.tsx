@@ -7,8 +7,15 @@
 // export default function Navbar() {
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+//   const scrollToSection = (sectionId: string) => {
+//     setIsMenuOpen(false);
+//     const section = document.getElementById(sectionId);
+//     if (section) {
+//       section.scrollIntoView({ behavior: "smooth" });
+//     }
+//   };
+
 //   return (
-//     // <nav className="bg-[#19485F] text-white py-4 fixed w-full z-10">
 //     <nav className="bg-[#19485F] text-white py-4 fixed w-full z-50">
 //       <div className="container mx-auto px-4">
 //         <div className="flex justify-between items-center">
@@ -16,27 +23,30 @@
 //             Moses Nyikwagh
 //           </Link>
 //           <div className="hidden md:flex space-x-4">
-//             <Link href="/" className="hover:text-[#D9E0A4] transition-colors">
+//             <button
+//               onClick={() => scrollToSection("home")}
+//               className="hover:text-[#D9E0A4] transition-colors"
+//             >
 //               Home
-//             </Link>
-//             <Link
-//               href="#about"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("about")}
 //               className="hover:text-[#D9E0A4] transition-colors"
 //             >
 //               About
-//             </Link>
-//             <Link
-//               href="#projects"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("projects")}
 //               className="hover:text-[#D9E0A4] transition-colors"
 //             >
 //               Projects
-//             </Link>
-//             <Link
-//               href="#contact"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("contact")}
 //               className="hover:text-[#D9E0A4] transition-colors"
 //             >
 //               Contact
-//             </Link>
+//             </button>
 //           </div>
 //           <button
 //             className="md:hidden"
@@ -49,30 +59,30 @@
 //       {isMenuOpen && (
 //         <div className="md:hidden">
 //           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-//             <Link
-//               href="/"
+//             <button
+//               onClick={() => scrollToSection("home")}
 //               className="block hover:text-[#D9E0A4] transition-colors"
 //             >
 //               Home
-//             </Link>
-//             <Link
-//               href="#about"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("about")}
 //               className="block hover:text-[#D9E0A4] transition-colors"
 //             >
 //               About
-//             </Link>
-//             <Link
-//               href="#projects"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("projects")}
 //               className="block hover:text-[#D9E0A4] transition-colors"
 //             >
 //               Projects
-//             </Link>
-//             <Link
-//               href="#contact"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("contact")}
 //               className="block hover:text-[#D9E0A4] transition-colors"
 //             >
 //               Contact
-//             </Link>
+//             </button>
 //           </div>
 //         </div>
 //       )}
@@ -129,6 +139,14 @@ export default function Navbar() {
             >
               Contact
             </button>
+            <a
+              href="https://www.indepthorb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#D9E0A4] transition-colors"
+            >
+              Blog
+            </a>
           </div>
           <button
             className="md:hidden"
@@ -165,6 +183,14 @@ export default function Navbar() {
             >
               Contact
             </button>
+            <a
+              href="https://www.indepthorb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block hover:text-[#D9E0A4] transition-colors"
+            >
+              Blog
+            </a>
           </div>
         </div>
       )}

@@ -13,6 +13,13 @@
 //     router.push("/admin");
 //   };
 
+//   const scrollToSection = (sectionId: string) => {
+//     const section = document.getElementById(sectionId);
+//     if (section) {
+//       section.scrollIntoView({ behavior: "smooth" });
+//     }
+//   };
+
 //   return (
 //     <footer className="bg-[#D9E0A4] text-[#19485F] py-8">
 //       <div className="container mx-auto px-4">
@@ -40,30 +47,30 @@
 //             </div>
 //           </div>
 //           <nav className="flex space-x-4 mb-4 md:mb-0">
-//             <Link
-//               href="/"
+//             <button
+//               onClick={() => scrollToSection("home")}
 //               className="hover:text-[#19485F]/70 transition-colors"
 //             >
 //               Home
-//             </Link>
-//             <Link
-//               href="#about"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("about")}
 //               className="hover:text-[#19485F]/70 transition-colors"
 //             >
 //               About
-//             </Link>
-//             <Link
-//               href="#projects"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("projects")}
 //               className="hover:text-[#19485F]/70 transition-colors"
 //             >
 //               Projects
-//             </Link>
-//             <Link
-//               href="#contact"
+//             </button>
+//             <button
+//               onClick={() => scrollToSection("contact")}
 //               className="hover:text-[#19485F]/70 transition-colors"
 //             >
 //               Contact
-//             </Link>
+//             </button>
 //           </nav>
 //           <div className="flex space-x-4">
 //             <a
@@ -186,6 +193,14 @@ export default function Footer() {
             >
               Contact
             </button>
+            <a
+              href="https://www.indepthorb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#19485F]/70 transition-colors"
+            >
+              Blog
+            </a>
           </nav>
           <div className="flex space-x-4">
             <a

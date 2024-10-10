@@ -1,167 +1,67 @@
-// "use client";
-
-// import { useState } from "react";
-// import { motion } from "framer-motion";
-// import { addProject } from "@/app/actions";
-
-// export default function ProjectForm() {
-//   const [project, setProject] = useState({
-//     name: "",
-//     description: "",
-//     image: "",
-//     link: "",
-//     techStack: "",
-//   });
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     const formData = new FormData();
-//     Object.entries(project).forEach(([key, value]) => {
-//       formData.append(key, value);
-//     });
-//     const result = await addProject(formData);
-//     if (result.success) {
-//       // Reset form or show success message
-//       setProject({
-//         name: "",
-//         description: "",
-//         image: "",
-//         link: "",
-//         techStack: "",
-//       });
-//     }
-//   };
-//   return (
-//     <form onSubmit={handleSubmit} className="space-y-4">
-//       <div>
-//         <label
-//           htmlFor="name"
-//           className="block text-sm font-medium text-gray-700"
-//         >
-//           Project Name
-//         </label>
-//         <input
-//           type="text"
-//           id="name"
-//           value={project.name}
-//           onChange={(e) => setProject({ ...project, name: e.target.value })}
-//           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#19485F] focus:ring-[#19485F]"
-//           required
-//         />
-//       </div>
-//       <div>
-//         <label
-//           htmlFor="description"
-//           className="block text-sm font-medium text-gray-700"
-//         >
-//           Description
-//         </label>
-//         <textarea
-//           id="description"
-//           value={project.description}
-//           onChange={(e) =>
-//             setProject({ ...project, description: e.target.value })
-//           }
-//           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#19485F] focus:ring-[#19485F]"
-//           rows={3}
-//           required
-//         ></textarea>
-//       </div>
-//       <div>
-//         <label
-//           htmlFor="image"
-//           className="block text-sm font-medium text-gray-700"
-//         >
-//           Image URL
-//         </label>
-//         <input
-//           type="url"
-//           id="image"
-//           value={project.image}
-//           onChange={(e) => setProject({ ...project, image: e.target.value })}
-//           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#19485F] focus:ring-[#19485F]"
-//           required
-//         />
-//       </div>
-//       <div>
-//         <label
-//           htmlFor="link"
-//           className="block text-sm font-medium text-gray-700"
-//         >
-//           Project Link
-//         </label>
-//         <input
-//           type="url"
-//           id="link"
-//           value={project.link}
-//           onChange={(e) => setProject({ ...project, link: e.target.value })}
-//           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#19485F] focus:ring-[#19485F]"
-//           required
-//         />
-//       </div>
-//       <div>
-//         <label
-//           htmlFor="techStack"
-//           className="block text-sm font-medium text-gray-700"
-//         >
-//           Tech Stack (comma-separated)
-//         </label>
-//         <input
-//           type="text"
-//           id="techStack"
-//           value={project.techStack}
-//           onChange={(e) =>
-//             setProject({ ...project, techStack: e.target.value })
-//           }
-//           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#19485F] focus:ring-[#19485F]"
-//           required
-//         />
-//       </div>
-//       <motion.button
-//         type="submit"
-//         className="w-full bg-[#19485F] text-white py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors"
-//         whileTap={{ scale: 0.95 }}
-//       >
-//         Add Project
-//       </motion.button>
-//     </form>
-//   );
-// }
-
 "use client";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { addProject } from "@/app/actions";
+import { useRouter } from "next/navigation";
 
 export default function ProjectForm() {
+  const router = useRouter();
   const [project, setProject] = useState({
     name: "",
     description: "",
     image: "",
     link: "",
     techStack: "",
+    webScreenshots: "",
+    mobileScreenshots: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
+
     const formData = new FormData();
     Object.entries(project).forEach(([key, value]) => {
-      formData.append(key, value);
+      if (key === "techStack") {
+        formData.append(
+          key,
+          JSON.stringify(value.split(",").map((tech) => tech.trim()))
+        );
+      } else if (key === "webScreenshots" || key === "mobileScreenshots") {
+        formData.append(
+          key,
+          JSON.stringify(value.split("\n").map((url) => url.trim()))
+        );
+      } else {
+        formData.append(key, value);
+      }
     });
-    const result = await addProject(formData);
-    if (result.success) {
-      setProject({
-        name: "",
-        description: "",
-        image: "",
-        link: "",
-        techStack: "",
-      });
+
+    try {
+      const result = await addProject(formData);
+      if (result.success) {
+        setProject({
+          name: "",
+          description: "",
+          image: "",
+          link: "",
+          techStack: "",
+          webScreenshots: "",
+          mobileScreenshots: "",
+        });
+        router.refresh(); // Refresh the current route
+      } else {
+        setError(result.message || "Failed to add project");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred");
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   return (
@@ -173,6 +73,7 @@ export default function ProjectForm() {
         <h2 className="text-2xl font-bold text-center text-[#19485F] mb-6">
           Add New Project
         </h2>
+        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
         <div>
           <label
             htmlFor="name"
@@ -256,6 +157,40 @@ export default function ProjectForm() {
             className="block w-full px-3 py-2 border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-[#19485F] transition-colors"
             required
           />
+        </div>
+        <div>
+          <label
+            htmlFor="webScreenshots"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Web Screenshots (one URL per line)
+          </label>
+          <textarea
+            id="webScreenshots"
+            value={project.webScreenshots}
+            onChange={(e) =>
+              setProject({ ...project, webScreenshots: e.target.value })
+            }
+            className="block w-full px-3 py-2 border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-[#19485F] transition-colors"
+            rows={3}
+          ></textarea>
+        </div>
+        <div>
+          <label
+            htmlFor="mobileScreenshots"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Mobile Screenshots (one URL per line)
+          </label>
+          <textarea
+            id="mobileScreenshots"
+            value={project.mobileScreenshots}
+            onChange={(e) =>
+              setProject({ ...project, mobileScreenshots: e.target.value })
+            }
+            className="block w-full px-3 py-2 border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-[#19485F] transition-colors"
+            rows={3}
+          ></textarea>
         </div>
         <motion.button
           type="submit"

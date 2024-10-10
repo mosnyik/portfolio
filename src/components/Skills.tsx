@@ -1,27 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const skills = [
-  "JavaScript",
-  "TypeScript",
-  "Dart",
-  "Java",
-  "Solidity",
-  "Clarity",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Flutter",
-  "MySQL",
-  "Firebase",
-  "OOP",
-  "Data Structures",
-  "Algorithms",
-  "and more",
-];
+import { useEffect, useState } from "react";
+import { getSkills } from "@/app/actions";
+import { Skill } from "@/types/skillTypes";
 
 export default function Skills() {
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchSkills() {
+      try {
+        const fetchedSkills = await getSkills();
+        setSkills(fetchedSkills);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching skills:", err);
+        setError("Failed to load skills. Please try again later.");
+        setLoading(false);
+      }
+    }
+
+    fetchSkills();
+  }, []);
+
+  if (loading) {
+    return <div className="text-center py-20">Loading skills...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-20 text-red-500">{error}</div>;
+  }
+
   return (
     <section className="py-20 bg-[#D9E0A4]">
       <div className="container mx-auto px-4">
@@ -46,13 +58,13 @@ export default function Skills() {
         <div className="flex flex-wrap justify-center gap-4">
           {skills.map((skill, index) => (
             <motion.div
-              key={skill}
+              key={skill.id}
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-[#19485F] text-white py-2 px-4 rounded-full text-lg"
             >
-              {skill}
+              {skill.name}
             </motion.div>
           ))}
         </div>
