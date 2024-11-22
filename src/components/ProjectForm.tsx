@@ -58,7 +58,7 @@ export default function ProjectForm() {
         setError(result.message || "Failed to add project");
       }
     } catch (err) {
-      setError("An unexpected error occurred");
+      setError(`An unexpected error occurred: ${err}`);
     } finally {
       setIsSubmitting(false);
     }

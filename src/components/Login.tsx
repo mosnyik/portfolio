@@ -27,10 +27,11 @@ export default function Login({ onLogin }: LoginProps) {
       if (data.success) {
         onLogin();
       } else {
+        console.log("there was an error:", error);
         setError("Invalid credentials");
       }
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      setError(`An error occurred. ${error} Please try again.`);
     } finally {
       setIsSubmitting(false);
     }

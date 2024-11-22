@@ -13,7 +13,7 @@ export default function LandingPage() {
     if (isInView) {
       mainControls.start("visible");
     }
-  }, [isInView]);
+  }, [isInView, mainControls]);
 
   const backgroundImages = [
     "https://gbo1qdj0roz2nqut.public.blob.vercel-storage.com/spacemall-website-46zM1oUv6zxaJvLDdy1TOxO2Np4yff.png",

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Github, Linkedin, Mail, Twitter, Settings } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -71,17 +71,18 @@ export default function Footer() {
             >
               Contact
             </button>
-            <a
+            <Link
               href="https://www.indepthorb.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#19485F]/70 transition-colors"
             >
+              {" "}
               Blog
-            </a>
+            </Link>
           </nav>
           <div className="flex space-x-4">
-            <a
+            <Link
               href="https://github.com/mosnyik"
               target="_blank"
               rel="noopener noreferrer"
@@ -89,8 +90,8 @@ export default function Footer() {
             >
               <Github size={24} />
               <span className="sr-only">GitHub</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://www.linkedin.com/in/moses-nyikwagh-a29a25127/"
               target="_blank"
               rel="noopener noreferrer"
@@ -98,8 +99,8 @@ export default function Footer() {
             >
               <Linkedin size={24} />
               <span className="sr-only">LinkedIn</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="https://x.com/mosnyik"
               target="_blank"
               rel="noopener noreferrer"
@@ -107,14 +108,14 @@ export default function Footer() {
             >
               <Twitter size={24} />
               <span className="sr-only">Twitter</span>
-            </a>
-            <a
+            </Link>
+            <Link
               href="mailto:mosnyik@gmail.com"
               className="hover:text-[#19485F]/70 transition-colors"
             >
               <Mail size={24} />
               <span className="sr-only">Email</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="mt-8 text-center text-sm">
