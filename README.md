@@ -1,33 +1,98 @@
+# Nyikwagh Moses Portfolio Website
+
 This is the portfolio website of Nyikwagh Moses.
 
 A software engineer in Nigeria with experience in building both mobile and web systems in both web 2 and the web 3.
 
-## Getting Started
+## 🚀 Features
 
-First, run the development server:
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Modern UI**: Clean and professional user interface
+- **Portfolio Sections**: 
+  - About
+  - Projects
+  - Contact
+  - Blog
+
+## 💻 Tech Stack
+
+- Next.js
+- React
+- Tailwind CSS
+- FIrebase firestore (Database)
+- Vercel (Deployment)
+
+## 🌟 Key Sections
+
+### Home
+The landing page features a professional introduction and overview of technical expertise in:
+- Full stack web development
+- Mobile development
+- Smart contract development
+- System architecture and design
+
+### Projects
+Showcase of development work across multiple domains:
+- Web Applications
+- Mobile Apps
+- Blockchain Projects
+
+### Blog
+Technical writing and industry insights
+
+## 🛠️ Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/portfolio-website.git
+
+```
+
+Enter into the portfolio directory:
+
+```bash
+cd portfolio &&
+npm install
+
+```
+
+ Then run the development server:
 
 ```bash
 npm run dev
 
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Contact Information
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📫 How to Reach Me
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
 
-## Learn More
+### Professional Channels
 
-To learn more about Next.js, take a look at the following resources:
+- **Portfolio**: [mosnyik.vercel.app](https://mosnyik.vercel.app)
+- **Email**: [mosnyik@gmail.com](mailto:mosnyik@gmail.com)
+- **LinkedIn**: [Nyikwagh Moses](https://www.linkedin.com/in/moses-nyikwagh-a29a25127/)
+- **GitHub**: [Nyikwagh Moses](https://github.com/mosnyik)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Social Media
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Twitter**: [@mosnyik.btc](https://www.twitter.com/mosnyik)
+<!-- - **Instagram**: [@your_handle](https://instagram.com/your_handle) -->
 
-## Deploy on Vercel
+## 💬 Preferred Contact Method
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For professional inquiries, email is the best way to reach me. I typically respond within 24-48 hours. But you can follow up by phone call - (+234) 8063862295
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Collaboration Opportunities
+
+I'm particularly interested in collaborating on:
+
+- Full-stack web development projects
+- Mobile application development
+- Smart contract development
+- System architecture design
+
+Feel free to reach out through any of the channels above to discuss potential collaborations!
+

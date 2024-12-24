@@ -1,9 +1,9 @@
-
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "../components/NavBar";
 import Footer from "../components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +32,8 @@ export default function RootLayout({
         <Navbar />
         <main className="pt-16">{children}</main>
         <Footer />
+        <Analytics />
+        {/* {process.env.NODE_ENV !== "development" && <Analytics />} */}
       </body>
     </html>
   );
