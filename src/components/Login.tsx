@@ -125,10 +125,6 @@ import { motion } from "framer-motion";
 import { sendSignInLinkToEmail } from "firebase/auth";
 import { actionCodeSettings, auth } from "@/firebase";
 
-interface LoginProps {
-  onLogin: () => void;
-}
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -161,7 +157,7 @@ export default function Login() {
             Check Your Email
           </h2>
           <p className="text-center text-gray-600">
-            We've sent a login link to <strong>{email}</strong>. Click the link
+            We&apos;ve sent a login link to <strong>{email}</strong>. Click the link
             in the email to sign in.
           </p>
         </div>
