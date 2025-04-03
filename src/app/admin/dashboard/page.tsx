@@ -64,7 +64,6 @@
 //   );
 // }
 
-
 "use client";
 
 import ImageUploader from "@/components/ImageUploader";
@@ -82,10 +81,9 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, stop loading
-        setIsLoading(false);
-      } else {
+      setIsLoading(false);
+      if (!user) {
+        console.log("From dashboard page, user is not logged In", user);
         // User is signed out, redirect to login
         router.push("/login");
       }
@@ -105,7 +103,7 @@ export default function AdminDashboard() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#19485F]"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#19485F]"></div>
       </div>
     );
   }
@@ -150,4 +148,3 @@ export default function AdminDashboard() {
     </div>
   );
 }
-
