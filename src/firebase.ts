@@ -20,6 +20,6 @@ export { db, auth };
 
 // URL where users will be redirected after clicking the email link
 export const actionCodeSettings = {
-  url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000/admin/dashboard",
+  url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000/admin",
   handleCodeInApp: true,
 };
