@@ -5,12 +5,33 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #19485f;
+  --secondary: #d9e0a4;
+  --card-bg: #ffffff;
+  --text-primary: #19485f;
+  --text-secondary: #6b7280;
+  --border-color: #d1d5db;
+  --section-bg: #d9e0a4;
+  --dark-section-bg: #1a2332;
+  --dark-card-bg: #2a3441;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --primary: #60a5fa;
+  --secondary: #1a2332;
+  --card-bg: #1e293b;
+  --text-primary: #60a5fa;
+  --text-secondary: #cbd5e1;
+  --border-color: #475569;
+  --section-bg: #1a2332;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f1f5f9;
   }
 }
 
@@ -18,6 +39,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
@@ -51,5 +73,118 @@ body {
 }
 
 html {
-  scroll-padding-top: 4rem; /* Adjust this value based on your navbar height */
+  scroll-padding-top: 4rem;
+}
+
+/* Dark mode specific overrides */
+.dark {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Target specific sections */
+.dark section.bg-white {
+  background-color: #1e293b !important;
+}
+
+.dark section.bg-\[\#D9E0A4\] {
+  background-color: #1e293b !important;
+}
+
+.dark section.bg-black {
+  background-color: #0f172a !important;
+}
+
+.dark section.bg-\[\#19485F\] {
+  background-color: #0f172a !important;
+}
+
+/* Project cards */
+.dark .bg-\[\#D9E0A4\].rounded-lg {
+  background-color: #334155 !important;
+}
+
+/* Text colors */
+.dark .text-\[\#19485F\] {
+  color: #60a5fa !important;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+/* Buttons and interactive elements */
+.dark .bg-\[\#19485F\] {
+  background-color: #2563eb !important;
+}
+
+.dark .hover\:bg-opacity-80:hover {
+  background-color: #3b82f6 !important;
+  opacity: 1 !important;
+}
+
+/* Form elements */
+.dark input,
+.dark textarea {
+  background-color: #334155 !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+.dark input:focus,
+.dark textarea:focus {
+  border-color: #60a5fa !important;
+}
+
+/* Footer */
+.dark footer.bg-\[\#D9E0A4\] {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark footer .text-\[\#19485F\] {
+  color: #60a5fa !important;
+}
+
+.dark footer .hover\:text-\[\#19485F\]\/70:hover {
+  color: #93c5fd !important;
+}
+
+/* Navbar */
+.dark nav.bg-\[\#19485F\] {
+  background-color: #0f172a !important;
+}
+
+/* Theme toggle dropdown */
+.dark .bg-white.shadow-md {
+  background-color: #1e293b !important;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #334155 !important;
+}
+
+/* Skill badges */
+.dark .bg-\[\#19485F\].text-white.py-2.px-4.rounded-full {
+  background-color: #2563eb !important;
+}
+
+/* Project screenshots section headers */
+.dark .text-xl.font-bold.mb-6.text-center.text-\[\#19485F\] {
+  color: #60a5fa !important;
+}
+
+/* Fix for any remaining light backgrounds */
+.dark .bg-gray-50 {
+  background-color: #0f172a !important;
+}
+
+.dark .bg-gray-200 {
+  background-color: #334155 !important;
+}
+
+/* Fix for tooltips */
+.dark
+  .absolute.bottom-full.left-1\/2.transform.-translate-x-1\/2.mb-1.px-2.py-1.bg-\[\#19485F\].text-white.text-xs.rounded {
+  background-color: #2563eb !important;
 }
