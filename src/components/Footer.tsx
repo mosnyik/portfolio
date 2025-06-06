@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Github, Linkedin, Mail, Twitter, Settings } from "lucide-react";
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
 
 export default function Footer() {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -21,7 +22,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#D9E0A4] text-[#19485F] py-8">
+    <footer className="bg-[#D9E0A4] dark:bg-slate-800 text-[#19485F] dark:text-blue-400 py-8 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
@@ -33,13 +34,13 @@ export default function Footer() {
                   onClick={handleAdminClick}
                   onMouseEnter={() => setShowTooltip(true)}
                   onMouseLeave={() => setShowTooltip(false)}
-                  className="hover:text-[#19485F]/70 transition-colors focus:outline-none"
+                  className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors focus:outline-none"
                   aria-label="Admin Dashboard"
                 >
                   <Settings size={12} />
                 </button>
                 {showTooltip && (
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-[#19485F] text-white text-xs rounded whitespace-nowrap">
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-[#19485F] dark:bg-slate-700 text-white text-xs rounded whitespace-nowrap">
                     Admin Only
                   </div>
                 )}
@@ -49,25 +50,25 @@ export default function Footer() {
           <nav className="flex space-x-4 mb-4 md:mb-0">
             <button
               onClick={() => scrollToSection("home")}
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection("about")}
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("projects")}
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               Projects
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               Contact
             </button>
@@ -75,18 +76,18 @@ export default function Footer() {
               href="https://www.indepthorb.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
-              {" "}
               Blog
             </Link>
           </nav>
-          <div className="flex space-x-4">
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
             <Link
               href="https://github.com/mosnyik"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               <Github size={24} />
               <span className="sr-only">GitHub</span>
@@ -95,7 +96,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/moses-nyikwagh-a29a25127/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               <Linkedin size={24} />
               <span className="sr-only">LinkedIn</span>
@@ -104,14 +105,14 @@ export default function Footer() {
               href="https://x.com/mosnyik"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               <Twitter size={24} />
               <span className="sr-only">Twitter</span>
             </Link>
             <Link
               href="mailto:mosnyik@gmail.com"
-              className="hover:text-[#19485F]/70 transition-colors"
+              className="hover:text-[#19485F]/70 dark:hover:text-blue-300 transition-colors"
             >
               <Mail size={24} />
               <span className="sr-only">Email</span>
@@ -128,3 +129,4 @@ export default function Footer() {
     </footer>
   );
 }
+
