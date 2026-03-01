@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="mb-4 md:mb-0">
             <h3 className="text-2xl font-bold">Moses Nyikwagh</h3>
             <div className="flex items-center">
-              <p className="text-sm mr-2">Software Engineer</p>
+              <p className="text-sm mr-2">Fintech & Blockchain Engineer</p>
               <div className="relative">
                 <button
                   onClick={handleAdminClick}

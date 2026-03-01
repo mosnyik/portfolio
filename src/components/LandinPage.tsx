@@ -43,11 +43,11 @@ export default function LandingPage() {
         className="z-20 text-center"
       >
         <h1 className="text-6xl font-bold mb-4">Nyikwagh Moses</h1>
-        <h2 className="text-3xl mb-8">Software Engineer</h2>
+        <h2 className="text-3xl mb-8">Fintech & Blockchain Engineer</h2>
         <p className="text-xl max-w-2xl mx-auto">
-          Specializing in full stack web, mobile development and smart contract
-          development, with expertise in resilient system architecture and
-          design.
+          I build crypto payment infrastructure. From multi-chain HD wallets to
+          fiat settlement systems — I create the backend that powers crypto-to-fiat
+          transactions across Bitcoin, Ethereum, and Tron networks.
         </p>
       </motion.div>
       <motion.div
