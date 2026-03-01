@@ -79,11 +79,14 @@ const applicationTips = [
 ];
 
 const salaryRanges = [
-  { role: "Mid Backend (Nigeria Remote)", range: "$2,000 - $4,000/month" },
-  { role: "Senior Backend (Nigeria Remote)", range: "$4,000 - $7,000/month" },
-  { role: "Blockchain/Web3 Developer", range: "$5,000 - $10,000/month" },
-  { role: "Fintech Engineer (International)", range: "$7,000 - $12,000/month" },
-  { role: "Senior Web3 (International)", range: "$10,000 - $15,000+/month" },
+  // Remote - Regional/Adjusted rates (company adjusts for your location)
+  { role: "Mid Backend", range: "$1,500 - $3,000/month", category: "Regional Rates", region: "US/EU startups hiring globally", highlight: false },
+  { role: "Senior Backend", range: "$3,000 - $5,000/month", category: "Regional Rates", region: "US/EU startups hiring globally", highlight: false },
+  { role: "Blockchain/Fintech Specialist", range: "$4,000 - $7,000/month", category: "Regional Rates", region: "Crypto companies, Web3 startups", highlight: true, note: "YOUR SWEET SPOT - Less competition, your exact skill set" },
+  // Remote - Global rates (same pay regardless of location)
+  { role: "Mid Backend", range: "$5,000 - $8,000/month", category: "Global Rates", region: "US/EU (GitLab, Automattic, etc.)", highlight: false },
+  { role: "Senior Backend", range: "$8,000 - $12,000/month", category: "Global Rates", region: "US/EU tech companies", highlight: false },
+  { role: "Senior Web3/Fintech", range: "$10,000 - $15,000/month", category: "Global Rates", region: "US/EU crypto & fintech", highlight: "stretch", note: "STRETCH GOAL - Aim here after 1-2 years" },
 ];
 
 export default function Resources() {
@@ -101,19 +104,41 @@ export default function Resources() {
           {/* Salary Ranges */}
           <section className="mb-12">
             <h2 className="text-2xl font-semibold text-[#19485F] mb-4">Target Salary Ranges (Remote)</h2>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white rounded-lg shadow-md overflow-hidden overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-[#19485F] text-white">
                   <tr>
-                    <th className="px-6 py-3 text-left">Role</th>
-                    <th className="px-6 py-3 text-left">Range</th>
+                    <th className="px-4 py-3 text-left">Role</th>
+                    <th className="px-4 py-3 text-left">Range</th>
+                    <th className="px-4 py-3 text-left">Pay Type</th>
+                    <th className="px-4 py-3 text-left">Region/Companies</th>
                   </tr>
                 </thead>
                 <tbody>
                   {salaryRanges.map((item, index) => (
-                    <tr key={index} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                      <td className="px-6 py-3 text-gray-800">{item.role}</td>
-                      <td className="px-6 py-3 text-gray-800 font-medium">{item.range}</td>
+                    <tr
+                      key={index}
+                      className={
+                        item.highlight === true
+                          ? "bg-green-100 border-l-4 border-green-500"
+                          : item.highlight === "stretch"
+                            ? "bg-yellow-50 border-l-4 border-yellow-500"
+                            : index % 2 === 0
+                              ? "bg-gray-50"
+                              : "bg-white"
+                      }
+                    >
+                      <td className="px-4 py-3 text-gray-800">
+                        {item.role}
+                        {item.note && (
+                          <div className={`text-xs mt-1 font-semibold ${item.highlight === true ? "text-green-700" : "text-yellow-700"}`}>
+                            {item.note}
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-gray-800 font-medium">{item.range}</td>
+                      <td className="px-4 py-3 text-gray-600 text-sm">{item.category}</td>
+                      <td className="px-4 py-3 text-gray-600 text-sm">{item.region}</td>
                     </tr>
                   ))}
                 </tbody>
