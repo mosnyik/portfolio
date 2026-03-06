@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import MobileScreenshots from "../components/MobileScreenshots";
 import WebScreenshots from "../components/WebScreenshots";
-import { Project } from "@/types/projectsTypes";
+import type { Project } from "@/types/projectsTypes";
 import { getProjectsFromFirebase } from "@/firebaseOps";
 import ProjectSkeleton from "./ProjectSkeleton";
 
@@ -49,13 +49,13 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold mb-8 text-center text-[#19485F]"
+          className="text-4xl font-bold mb-8 text-center text-[#19485F] dark:text-blue-400"
         >
           Projects
         </motion.h2>
@@ -70,12 +70,12 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="bg-[#D9E0A4] rounded-lg overflow-hidden shadow-lg"
+                  className="bg-[#D9E0A4] dark:bg-slate-800 rounded-lg overflow-hidden shadow-lg transition-colors duration-300"
                 >
                   <div className="md:flex">
                     <div className="md:w-1/2 p-1 rounded">
                       <Image
-                        src={project.image}
+                        src={project.image || "/placeholder.svg"}
                         alt={project.name}
                         width={400}
                         height={300}
@@ -83,21 +83,21 @@ export default function Projects() {
                       />
                     </div>
                     <div className="p-6 md:w-1/2">
-                      <h3 className="text-2xl font-bold mb-2 text-[#19485F]">
+                      <h3 className="text-2xl font-bold mb-2 text-[#19485F] dark:text-blue-400">
                         {project.name}
                       </h3>
-                      <p className="text-gray-700 mb-4">
+                      <p className="text-gray-700 dark:text-gray-300 mb-4">
                         {project.description}
                       </p>
                       <div className="mb-4">
-                        <h4 className="text-lg font-semibold mb-2 text-[#19485F]">
+                        <h4 className="text-lg font-semibold mb-2 text-[#19485F] dark:text-blue-400">
                           Tech Stack:
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {project.techStack.map((tech) => (
                             <span
                               key={tech}
-                              className="bg-[#19485F] text-white py-1 px-2 rounded-full text-sm"
+                              className="bg-[#19485F] dark:bg-blue-600 text-white py-1 px-2 rounded-full text-sm transition-colors duration-300"
                             >
                               {tech}
                             </span>
@@ -108,7 +108,7 @@ export default function Projects() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-[#19485F] text-white py-2 px-4 rounded-full inline-block hover:bg-opacity-80 transition-colors"
+                        className="bg-[#19485F] dark:bg-blue-600 text-white py-2 px-4 rounded-full inline-block hover:bg-opacity-80 transition-colors duration-300"
                       >
                         View Project
                       </a>
