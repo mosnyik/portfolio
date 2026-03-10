@@ -6,10 +6,13 @@ import {
   deleteSkillFromFirebase,
   getSkillsFromFirebase,
   updateSkillInFirebase,
+  addVisitToFirebase,
+  getAnalyticsSummary as getAnalyticsSummaryFromFirebase,
 } from "../firebaseOps";
 
 import { Project } from "@/types/projectsTypes";
 import { Skill } from "@/types/skillTypes";
+import { Visit, AnalyticsSummary } from "@/types/visitTypes";
 import { revalidatePath } from "next/cache";
 import nodemailer from "nodemailer";
 
@@ -174,6 +177,41 @@ export async function deleteSkill(formData: FormData) {
     return {
       success: false,
       message: "An error occurred while deleting the skill",
+    };
+  }
+}
+
+// Analytics actions
+export async function recordVisit(
+  visitData: Omit<Visit, "id" | "timestamp">
+): Promise<{ success: boolean; message?: string }> {
+  try {
+    const result = await addVisitToFirebase({
+      ...visitData,
+      timestamp: new Date(),
+    });
+    return result;
+  } catch (error) {
+    console.error("Error in recordVisit:", error);
+    return { success: false, message: "Failed to record visit" };
+  }
+}
+
+export async function getAnalyticsSummary(): Promise<AnalyticsSummary> {
+  try {
+    return await getAnalyticsSummaryFromFirebase();
+  } catch (error) {
+    console.error("Error in getAnalyticsSummary:", error);
+    return {
+      totalVisits: 0,
+      monthlyVisits: 0,
+      uniqueVisitors: 0,
+      monthlyUniqueVisitors: 0,
+      sourceBreakdown: { social: 0, search: 0, blog: 0, direct: 0, other: 0 },
+      topReferrers: [],
+      topLocations: [],
+      dailyVisits: [],
+      repeatVisitors: [],
     };
   }
 }

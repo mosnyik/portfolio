@@ -3,7 +3,9 @@
 import ImageUploader from "@/components/ImageUploader";
 import ProjectForm from "@/components/ProjectForm";
 import SkillForm from "@/components/SkillForm";
+import AnalyticsDashboard from "@/components/AnalyticsDashboard";
 import { auth } from "@/firebase";
+import { BarChart3 } from "lucide-react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -44,7 +46,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
-      <div className="flex mb-6">
+      <div className="flex flex-wrap gap-2 mb-6">
         <button
           className={`mr-4 px-4 py-2 rounded-md ${
             activeTab === "projects"
@@ -66,7 +68,7 @@ export default function AdminDashboard() {
           Manage Skills
         </button>
         <button
-          className={`px-4 py-2 rounded-md ${
+          className={`mr-4 px-4 py-2 rounded-md ${
             activeTab === "images"
               ? "bg-[#19485F] text-white"
               : "bg-gray-200 text-[#19485F]"
@@ -75,10 +77,22 @@ export default function AdminDashboard() {
         >
           Upload Images
         </button>
+        <button
+          className={`px-4 py-2 rounded-md flex items-center gap-2 ${
+            activeTab === "analytics"
+              ? "bg-[#19485F] text-white"
+              : "bg-gray-200 text-[#19485F]"
+          }`}
+          onClick={() => setActiveTab("analytics")}
+        >
+          <BarChart3 className="w-4 h-4" />
+          Analytics
+        </button>
       </div>
       {activeTab === "projects" && <ProjectForm />}
       {activeTab === "skills" && <SkillForm />}
       {activeTab === "images" && <ImageUploader />}
+      {activeTab === "analytics" && <AnalyticsDashboard />}
     </div>
   );
 }

@@ -14,11 +14,11 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 ### Social Media
 
 - **Twitter**: [@mosnyik.btc](https://www.twitter.com/mosnyik)
-<!-- - **Instagram**: [@your_handle](https://instagram.com/your_handle) -->
+- **Instagram**: [@mosnyiks](https://instagram.com/mosnyiks)
 
 ## 💬 Preferred Contact Method
 
-For professional inquiries, email is the best way to reach me. I typically respond within 24-48 hours. But you can follow up by phone call - (+234) 8063862295
+For professional inquiries, whatsApp - (+234) 8063862295 is the best way to reach me, I typically respond in less than 3 hours. Email is the next best way, I typically respond within 24-48 hours. But you can follow up by phone call - (+234) 8063862295
 
 ## 🤝 Collaboration Opportunities
 
