@@ -48,7 +48,6 @@ export default function RootLayout({
         <Footer />
         <Analytics />
         <VisitorTracker />
-        {/* {process.env.NODE_ENV !== "development" && <Analytics />} */}
       </body>
     </html>
   );
